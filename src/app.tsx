@@ -1,5 +1,5 @@
+import { Header } from './components/header'
+
 export function App() {
-  return (
-    <h1>Hi</h1>
-  )
+  return <Header />
 }

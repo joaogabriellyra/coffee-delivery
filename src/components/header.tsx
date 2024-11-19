@@ -3,7 +3,7 @@ import { CoffeeDeliveryLogo } from './ui/coffee-delivery-logo'
 
 export function Header() {
   return (
-    <header>
+    <header className="mb-24">
       <div className="py-8 px-40 flex justify-between items-center">
         <CoffeeDeliveryLogo />
         <div className="flex items-center gap-3">

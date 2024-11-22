@@ -3,7 +3,7 @@ import { CoffeeIntro } from './ui/coffee-intro'
 
 export function Intro() {
   return (
-    <div className="px-40 flex justify-between">
+    <div className="px-40 pb-24 flex justify-between">
       <div className="flex flex-col gap-16">
         <div className="flex flex-col gap-4">
           <h1 className="text-5xl leading-tight text-[#272221] font-extrabold">

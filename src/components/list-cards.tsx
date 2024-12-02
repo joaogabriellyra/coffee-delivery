@@ -1,4 +1,5 @@
 import { Card } from './card'
+import { coffeeCards } from './coffee-cards'
 
 export function ListOfCards() {
   return (
@@ -7,20 +8,21 @@ export function ListOfCards() {
         Nossos cafés
       </h1>
       <div className="grid grid-cols-4 gap-y-10">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {coffeeCards.map(
+          ({ id, name, description, types, price, componentSvg }) => {
+            return (
+              <Card
+                key={id}
+                id={id}
+                name={name}
+                description={description}
+                price={price}
+                types={types}
+                componentSvg={componentSvg}
+              />
+            )
+          }
+        )}
       </div>
     </div>
   )

@@ -22,9 +22,9 @@ export function Card({
       <div className="-mt-5 mb-4 flex flex-col gap-3 items-center">
         {componentSvg()}
         <div className="flex gap-1">
-          {types.map(type => (
+          {types.map((type, index) => (
             <span
-              key={id + 1}
+              key={id + Number(index)}
               className="px-2 py-1 text-[#C47F17] bg-[#F1E9C9] rounded-full text-[10px] leading-tight self-center"
             >
               {type}

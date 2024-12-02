@@ -12,7 +12,7 @@ export function ListOfCards() {
           ({ id, name, description, types, price, componentSvg }) => {
             return (
               <Card
-                key={id}
+                key={id * 10}
                 id={id}
                 name={name}
                 description={description}

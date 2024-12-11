@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 export function Header() {
   return (
     <header className="mb-24">
-      <div className="py-8 px-40 flex justify-between items-center">
+      <div className="flex justify-between items-center">
         <Link to="/" className="cursor-pointer">
           <CoffeeDeliveryLogo />
         </Link>
@@ -15,7 +15,7 @@ export function Header() {
             <span className="text-[#4B2995]">Recife, PE</span>
           </div>
           <div className="p-2 bg-[#F1E9C9] rounded-md cursor-pointer">
-            <Link to="/history">
+            <Link to="/checkout">
               <ShoppingCart
                 size={22}
                 weight="fill"

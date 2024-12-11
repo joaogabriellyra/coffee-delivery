@@ -1,4 +1,10 @@
-import { MapPinLine, CurrencyDollar } from '@phosphor-icons/react'
+import {
+  MapPinLine,
+  CurrencyDollar,
+  CreditCard,
+  Bank,
+  Money,
+} from '@phosphor-icons/react'
 
 export function Checkout() {
   return (
@@ -51,6 +57,35 @@ export function Checkout() {
                   pagar
                 </span>
               </div>
+            </div>
+            <div className="flex gap-3">
+              <button
+                type="button"
+                className="flex-1 flex items-center justify-center gap-2 p-4 rounded-lg bg-[#E6E5E5] hover:bg-[#D7D5D5] transition-colors"
+              >
+                <CreditCard size={16} color="#8047F8" />
+                <span className="text-[#574F4D] text-xs font-medium whitespace-nowrap">
+                  CARTÃO DE CRÉDITO
+                </span>
+              </button>
+              <button
+                type="button"
+                className="flex-1 flex items-center justify-center gap-2 p-4 rounded-lg bg-[#E6E5E5] hover:bg-[#D7D5D5] transition-colors"
+              >
+                <Bank size={16} color="#8047F8" />
+                <span className="text-[#574F4D] text-xs font-medium whitespace-nowrap">
+                  CARTÃO DE DÉBITO
+                </span>
+              </button>
+              <button
+                type="button"
+                className="flex-1 flex items-center justify-center gap-2 p-4 rounded-lg bg-[#E6E5E5] hover:bg-[#D7D5D5] transition-colors"
+              >
+                <Money size={16} color="#8047F8" />
+                <span className="text-[#574F4D] text-xs font-medium whitespace-nowrap">
+                  DINHEIRO
+                </span>
+              </button>
             </div>
           </div>
         </div>

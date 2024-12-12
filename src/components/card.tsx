@@ -47,14 +47,14 @@ export function Card({
         </div>
         <div className="flex p-2 rounded-md bg-[#E6E5E5] gap-1 mr-2">
           <button type="button">
-            <Minus size={14} className="text-[#8047F8]" />
+            <Minus size={14} className="text-[#8047F8] hover:text-[#4B2995]" />
           </button>
           <span className="text-lg text-[#272221]">1</span>
           <button type="button">
-            <Plus size={14} className="text-[#8047F8]" />
+            <Plus size={14} className="text-[#8047F8] hover:text-[#4B2995]" />
           </button>
         </div>
-        <div className="p-2 bg-[#4B2995] rounded-md cursor-pointer">
+        <div className="p-2 bg-[#4B2995] hover:bg-[#8047F8] rounded-md cursor-pointer">
           <ShoppingCartSimple size={22} color="#F3F2F2" weight="fill" />
         </div>
       </div>

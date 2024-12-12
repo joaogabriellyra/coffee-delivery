@@ -4,7 +4,7 @@
 
 @layer base {
   input {
-    @apply p-4 bg-[#EDEDED] text-sm text-[#574F4D] placeholder:text-[#8D8686];
+    @apply p-4 bg-[#EDEDED] text-sm text-[#574F4D] placeholder:text-[#8D8686] font-semibold;
   }
   input:focus {
     @apply ring-2 ring-[#C47F17] outline-none;

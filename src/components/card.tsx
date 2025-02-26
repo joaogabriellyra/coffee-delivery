@@ -1,4 +1,5 @@
 import { Minus, Plus, ShoppingCartSimple } from '@phosphor-icons/react'
+import { useState } from 'react'
 
 interface coffeeCard {
   id: number
@@ -17,6 +18,24 @@ export function Card({
   price,
   componentSvg,
 }: coffeeCard) {
+  const [coffe, setCoffes] = useState(1)
+
+  function handlePlusCoffee() {
+    setCoffes(coffe + 1)
+  }
+
+  function handleMinusCoffee() {
+    if (coffe > 1) {
+      setCoffes(coffe - 1)
+    }
+  }
+
+  function handleResetCoffee() {
+    if (coffe !== 1) {
+      setCoffes(1)
+    }
+  }
+
   return (
     <div className="bg-[#F3F2F2] flex flex-col rounded-tr-3xl rounded-bl-3xl w-64 items-center pb-5">
       <div className="-mt-5 mb-4 flex flex-col gap-3 items-center">
@@ -46,16 +65,22 @@ export function Card({
           </span>
         </div>
         <div className="flex p-2 rounded-md bg-[#E6E5E5] gap-1 mr-2">
-          <button type="button">
+          <button
+            type="button"
+            disabled={coffe < 2}
+            onClick={handleMinusCoffee}
+          >
             <Minus size={14} className="text-[#8047F8] hover:text-[#4B2995]" />
           </button>
-          <span className="text-lg text-[#272221]">1</span>
-          <button type="button">
+          <span className="text-lg text-[#272221]">{coffe}</span>
+          <button type="button" onClick={handlePlusCoffee}>
             <Plus size={14} className="text-[#8047F8] hover:text-[#4B2995]" />
           </button>
         </div>
         <div className="p-2 bg-[#4B2995] hover:bg-[#8047F8] rounded-md cursor-pointer">
-          <ShoppingCartSimple size={22} color="#F3F2F2" weight="fill" />
+          <button type="button" onClick={handleResetCoffee}>
+            <ShoppingCartSimple size={22} color="#F3F2F2" weight="fill" />
+          </button>
         </div>
       </div>
     </div>

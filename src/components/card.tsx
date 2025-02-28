@@ -1,6 +1,9 @@
 import { Minus, Plus, ShoppingCartSimple } from '@phosphor-icons/react'
+import { useState } from 'react'
+import Notification from './notification'
+import { useCart } from '../contexts/cart-context'
 
-interface coffeeCard {
+interface CoffeeCard {
   id: number
   name: string
   description: string
@@ -16,7 +19,30 @@ export function Card({
   types,
   price,
   componentSvg,
-}: coffeeCard) {
+}: CoffeeCard) {
+  const [coffeeQuantity, setCoffeeQuantity] = useState(1)
+  const [showNotification, setShowNotification] = useState(false)
+  const { addToCart } = useCart()
+
+  function handlePlusCoffee() {
+    setCoffeeQuantity(prev => prev + 1)
+  }
+
+  function handleMinusCoffee() {
+    if (coffeeQuantity > 1) {
+      setCoffeeQuantity(prev => prev - 1)
+    }
+  }
+
+  function handleAddToCart() {
+    addToCart({ id, name, price, quantity: coffeeQuantity })
+    setShowNotification(true)
+    setTimeout(() => setShowNotification(false), 2000)
+    if (coffeeQuantity > 1) {
+      setCoffeeQuantity(1)
+    }
+  }
+
   return (
     <div className="bg-[#F3F2F2] flex flex-col rounded-tr-3xl rounded-bl-3xl w-64 items-center pb-5">
       <div className="-mt-5 mb-4 flex flex-col gap-3 items-center">
@@ -46,17 +72,32 @@ export function Card({
           </span>
         </div>
         <div className="flex p-2 rounded-md bg-[#E6E5E5] gap-1 mr-2">
-          <button type="button">
+          <button
+            type="button"
+            disabled={coffeeQuantity < 2}
+            onClick={handleMinusCoffee}
+          >
             <Minus size={14} className="text-[#8047F8] hover:text-[#4B2995]" />
           </button>
-          <span className="text-lg text-[#272221]">1</span>
-          <button type="button">
+          <span className="text-lg text-[#272221]">{coffeeQuantity}</span>
+          <button type="button" onClick={handlePlusCoffee}>
             <Plus size={14} className="text-[#8047F8] hover:text-[#4B2995]" />
           </button>
         </div>
-        <div className="p-2 bg-[#4B2995] hover:bg-[#8047F8] rounded-md cursor-pointer">
+
+        <button
+          type="button"
+          onClick={handleAddToCart}
+          className="p-2 bg-[#4B2995] hover:bg-[#8047F8] rounded-md cursor-pointer"
+        >
           <ShoppingCartSimple size={22} color="#F3F2F2" weight="fill" />
-        </div>
+        </button>
+        {showNotification && (
+          <Notification
+            message="Item adicionado ao carrinho!"
+            onClose={() => setShowNotification(false)}
+          />
+        )}
       </div>
     </div>
   )

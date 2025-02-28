@@ -1,5 +1,6 @@
 import { Minus, Plus, ShoppingCartSimple } from '@phosphor-icons/react'
 import { useState } from 'react'
+import Notification from './notification'
 
 interface coffeeCard {
   id: number
@@ -19,6 +20,7 @@ export function Card({
   componentSvg,
 }: coffeeCard) {
   const [coffe, setCoffes] = useState(1)
+  const [showNotification, setShowNotification] = useState(false)
 
   function handlePlusCoffee() {
     setCoffes(coffe + 1)
@@ -33,6 +35,7 @@ export function Card({
   function handleResetCoffee() {
     if (coffe !== 1) {
       setCoffes(1)
+      setShowNotification(true)
     }
   }
 
@@ -77,11 +80,20 @@ export function Card({
             <Plus size={14} className="text-[#8047F8] hover:text-[#4B2995]" />
           </button>
         </div>
-        <div className="p-2 bg-[#4B2995] hover:bg-[#8047F8] rounded-md cursor-pointer">
-          <button type="button" onClick={handleResetCoffee}>
-            <ShoppingCartSimple size={22} color="#F3F2F2" weight="fill" />
-          </button>
-        </div>
+
+        <button
+          type="button"
+          onClick={handleResetCoffee}
+          className="p-2 bg-[#4B2995] hover:bg-[#8047F8] rounded-md cursor-pointer"
+        >
+          <ShoppingCartSimple size={22} color="#F3F2F2" weight="fill" />
+        </button>
+        {showNotification && (
+          <Notification
+            message="Item adicionado ao carrinho!"
+            onClose={() => setShowNotification(false)}
+          />
+        )}
       </div>
     </div>
   )
